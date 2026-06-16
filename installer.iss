@@ -2,7 +2,6 @@
 AppName=Folder Creator
 AppVersion=1.0
 AppPublisher=Ahmed Abdulla
-AppPublisherURL=https://github.com
 DefaultDirName={autopf}\FolderCreator
 DefaultGroupName=Folder Creator
 OutputBaseFilename=FolderCreator_Setup
@@ -17,7 +16,7 @@ UninstallDisplayIcon={app}\FolderCreator.exe
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional icons:"; Flags: checked
+Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional icons:"
 
 [Files]
 Source: "dist\FolderCreator.exe"; DestDir: "{app}"; Flags: ignoreversion
