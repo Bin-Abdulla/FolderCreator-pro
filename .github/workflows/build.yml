@@ -1,0 +1,45 @@
+name: Build FolderCreator
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build EXE with PyInstaller
+        run: pyinstaller --onefile --windowed --name FolderCreator app.py
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Build Installer
+        run: |
+          mkdir output
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+
+      - name: Upload Setup file
+        uses: actions/upload-artifact@v4
+        with:
+          name: FolderCreator_Setup
+          path: output/FolderCreator_Setup.exe
+
+      - name: Upload EXE only
+        uses: actions/upload-artifact@v4
+        with:
+          name: FolderCreator_EXE
+          path: dist/FolderCreator.exe
