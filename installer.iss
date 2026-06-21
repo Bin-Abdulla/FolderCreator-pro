@@ -27,6 +27,7 @@ Name: "{group}\Uninstall Folder Creator"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\Folder Creator"; Filename: "{app}\FolderCreator.exe"; Tasks: desktopicon
 
 [Run]
+Filename: "powershell"; Parameters: "-NoProfile -Command ""winget install AutoHotkey.AutoHotkey --silent --accept-package-agreements --accept-source-agreements"""; Flags: runhidden waituntilterminated
 Filename: "{app}\FolderCreator.exe"; Description: "Launch Folder Creator"; Flags: nowait postinstall skipifsilent
 
 [UninstallRun]
